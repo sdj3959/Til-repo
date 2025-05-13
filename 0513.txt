@@ -71,7 +71,7 @@ git fetch [remote-name] : main에 추가하지 않고 새로운 브랜치를 만
 
 git pull = git fetch + git merge
 
-- Git Fetch와 Git Pull 비교
+### 9. Git Fetch와 Git Pull 비교
 `git fetch`와 `git pull`은 Git에서 원격 저장소의 데이터를 로컬로 가져오는 두 가지 주요 명령어입니다. 하지만 이 두 명령어는 비슷해 보일 수 있지만, 매우 중요한 차이점이 있습니다.
 
 Git Fetch
