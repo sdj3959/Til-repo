@@ -1,0 +1,80 @@
+## 🗓️ 0514 - GitHub 협업 & Markdown
+
+### 🤝 Collaborator
+- push, issue, PR, wiki 등 전반적인 권한 보유
+
+### 📄 README.md
+- 프로젝트 소개, 설치법, 기여 가이드 등 포함
+
+### 🧾 Markdown 문법
+- 문법 사이트: [markdown-it.github.io](https://markdown-it.github.io/)
+
+### 🧩 Git Workflow
+- 중앙 집중형 vs Feature 브랜치 기반 방식
+
+### 🔀 PR(Pull Request)
+- 리뷰 → 승인 → 병합 → 브랜치 삭제
+
+### 🧬 협업 흐름 요약
+- 팀장: 저장소 생성, PR 리뷰 & merge
+- 팀원: 브랜치 생성, 작업, PR 요청
+
+### 🔂 Git Fork
+- 복사본에서 자유롭게 작업 후 PR 가능
+
+---
+
+## 🗓️ 0515 - Rebase, Cherry-pick, Tag
+
+### 🔁 Git Rebase
+- 커밋 히스토리를 재정렬하여 선형으로 만듦
+
+### 🧠 Interactive Rebase
+- `reword`, `squash`, `drop` 등 사용 가능
+- 커밋 정리용
+
+### 🍒 Cherry-pick
+- 특정 커밋만 골라 다른 브랜치에 복사
+
+### 🔖 Tag & 버전관리
+- `git tag`, `git push origin --tags`
+
+### ⚙️ Git Alias
+- 자주 쓰는 명령어를 짧게 설정
+
+### 🛡️ 민감 정보 관리
+- `.gitignore` 사전 설정 중요
+
+### 🧭 Git Reflog
+- HEAD 이동 기록 추적 및 복구
+
+---
+
+## 🗓️ 0516 - HTML 기본 구조와 작성법
+
+### 💡 작성 팁
+- 들여쓰기, 주석 활용, 의미 있는 파일명
+
+### 🧱 제목 & 단락 태그
+- `<h1>` ~ `<h6>`, `<p>`, `<br>`, `<hr>`
+
+### 📋 목록 태그
+- `<ul>`, `<ol>`, `<li>` 구조화
+
+### 🔗 하이퍼링크
+- `<a href="">링크</a>`, `target="_blank"`
+
+### 🖼️ 이미지 & 미디어
+- `<img src alt>`, `<audio>`, `<video>`
+
+### 📊 표 태그
+- `<table>`, `<tr>`, `<td>`, `<th>`
+
+### 📝 폼 요소
+- `<form>`과 `action`, `method`, `enctype` 등 속성
+
+---
+
+✅ **총정리**
+- Git 협업: 브랜치 전략, PR, Fork, Rebase 등 실전 위주 학습
+- HTML 기초 태그부터 폼 구성까지 실습 중심 구성
