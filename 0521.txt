@@ -1,0 +1,98 @@
+# 📘 CSS 강의 정리 노트 (5월 21일)
+
+## ✅ HTML 시맨틱 태그 정리
+
+### 📌 문서 구조 태그
+- **`<h1> ~ <h6>`**: 제목 태그, h1이 가장 중요함 (로고나 대제목)
+- **`<header>`**: 사이트 상단의 로고, 메뉴, 탐색용 요소 포함
+- **`<footer>`**: 작성자, 저작권, 관련 링크 등 문서 하단 정보 포함
+- **`<section>`**: 독립적인 콘텐츠 영역. 보통 내부에 제목 포함
+- **`<aside>`**: 사이드바, 광고, 보조 정보 영역에 사용
+- **`<nav>`**: 내비게이션 메뉴, 링크 목록 등 탐색 목적
+- **`<div>`**: 의미 없는 구획 나눔용 블록 (시맨틱 의미 없음)
+
+> 🧾 **요약**: 시맨틱 태그는 HTML 문서의 구조와 의미를 명확히 하여 유지보수성과 접근성을 향상시킵니다.
+
+---
+
+## ✅ 리스트와 텍스트 태그
+
+- **`<ol>` / `<ul>`**: 정렬된/정렬되지 않은 리스트, 자식은 항상 `<li>`만 가능
+- **`<p>`**: 문단을 구성할 때 사용
+- **`<hr>`**: 문단 구분선. 빈 태그 (닫는 태그 없음)
+
+> 🧾 **요약**: 리스트와 문단 태그는 정보를 시각적으로 구분하거나 계층적으로 표현할 때 유용합니다.
+
+---
+
+## ✅ CSS display 속성
+
+### 주요 값 정리
+
+| 값              | 줄바꿈 여부 | 크기 지정 가능 | 설명                                |
+|------------------|-------------|----------------|-------------------------------------|
+| `block`          | O           | O              | 한 줄 차지 (div, p 등 기본값)        |
+| `inline`         | X           | X              | 내용만큼 차지 (span, a 등)          |
+| `inline-block`   | X           | O              | 한 줄에 배치 + 크기 지정 가능       |
+| `none`           | X           | X              | 요소를 완전히 숨김                 |
+
+```css
+.block-element { display: block; }
+.inline-element { display: inline; }
+.inline-block-element { display: inline-block; }
+.hidden-element { display: none; }
+```
+
+> 🧾 **요약**: display 속성은 HTML 요소의 레이아웃과 시각적 위치를 결정하는 핵심 도구입니다.
+
+---
+
+## ✅ Flexbox 핵심 요약
+
+### 🔸 Flex 컨테이너 설정
+```css
+.flex-container {
+  display: flex;
+}
+```
+
+### 🔹 주요 속성
+
+- `flex-direction`: 주축 방향 설정 (row, column 등)
+- `justify-content`: 주축 정렬 (start, center, space-between 등)
+- `align-items`: 교차축 정렬 (center, stretch 등)
+- `flex-wrap`: 줄바꿈 허용 여부
+
+```css
+.flex-container {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+```
+
+### 🔹 아이템 개별 설정
+- `flex-grow`: 남은 공간 비율
+- `flex-shrink`: 줄어들 비율
+- `flex-basis`: 기본 크기
+- `order`: 시각적 순서
+- `align-self`: 개별 교차축 정렬
+
+```css
+.flex-item {
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: 200px;
+  order: 1;
+  align-self: center;
+}
+```
+
+> 🧾 **요약**: Flexbox는 1차원 레이아웃을 유연하게 구성할 수 있도록 도와주는 강력한 레이아웃 시스템입니다.
+
+---
+
+✅ **총정리**
+- 시맨틱 태그로 구조를 명확히 하고, display와 Flexbox로 레이아웃을 조정함
+- 각 속성을 조합하여 반응형 웹이나 다양한 컴포넌트 배치에 활용할 수 있음
