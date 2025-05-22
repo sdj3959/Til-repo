@@ -1,0 +1,84 @@
+# 📘 CSS 강의 정리 노트 (5월 22일)
+
+## ✅ 포지셔닝(Positioning) 기본
+
+| 속성      | 기준 기준점 | 스크롤 영향 | 설명 |
+|-----------|--------------|--------------|------|
+| static    | 기본 문서 흐름 | 영향받음     | 기본값 |
+| relative  | 자기 원래 위치 | 영향받음     | 자기 위치 기준으로 이동 |
+| absolute  | 가장 가까운 포지셔닝 조상 | 무관 | 지정 위치에 절대 배치 |
+| fixed     | 뷰포트        | 고정         | 항상 같은 곳에 위치 |
+| sticky    | 스크롤 임계점 | 혼합         | 특정 위치 도달 시 고정 |
+
+### 예시 코드
+```css
+.relative-element {
+  position: relative;
+  top: 20px;
+  left: 10px;
+}
+```
+
+> 🧾 **요약**: 포지셔닝은 요소의 위치를 문서 흐름에서 벗어나 직접 지정할 수 있게 해주며, 스크롤에 따라 고정하거나 겹치기 위한 핵심 도구입니다.
+
+---
+
+## ✅ z-index와 레이어링
+
+- **z-index**는 요소의 쌓임 순서를 지정함
+- 값이 클수록 위에 쌓임
+- 반드시 `position`이 설정된 요소에만 적용됨
+
+```css
+.layer1 {
+  position: absolute;
+  z-index: 1;
+}
+.layer2 {
+  position: absolute;
+  z-index: 2;
+}
+```
+
+> 🧾 **요약**: z-index는 팝업, 모달, 고정 버튼 등 겹치는 요소 표현에 필수입니다.
+
+---
+
+## ✅ 포지셔닝 활용 예시
+
+### 예제 1: 상대 + 절대 조합
+```html
+<div class="relative-container">
+  <div class="absolute-box">절대 포지션 박스</div>
+</div>
+```
+
+### 예제 2: 고정 헤더
+```css
+.fixed-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+```
+
+### 예제 3: 스티키 네비게이션
+```css
+.sticky-nav {
+  position: sticky;
+  top: 0;
+}
+```
+
+### 예제 4: z-index 레이어링
+```css
+.layer1 { z-index: 1; }
+.layer2 { z-index: 2; }
+```
+
+---
+
+✅ **총정리**
+- `position` 속성은 웹 요소의 배치를 제어하는 핵심 도구이며,
+- `z-index`는 시각적 레이어 순서를 결정하여 UI 구성의 유연성을 높입니다.
