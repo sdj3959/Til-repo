@@ -1,0 +1,140 @@
+# 📘 CSS 강의 정리 노트 (5월 23일)
+
+## ✅ 반응형 디자인 (Responsive Design)
+
+### 📌 개념
+- 화면 크기(모바일, 태블릿, 데스크탑 등)에 따라 스타일을 동적으로 변경하는 기법
+- 핵심: `미디어 쿼리` + `뷰포트 단위(vw, vh)`
+
+### 📐 미디어 쿼리 기본 문법
+```css
+@media (max-width: 768px) {
+  .container { font-size: 14px; }
+}
+```
+
+### 🎯 주요 조건
+- `max-width`, `min-width`: 너비 기준
+- `max-height`, `min-height`: 높이 기준
+- `orientation`: 가로/세로 방향
+- `resolution`: 해상도 기준
+
+### 📏 뷰포트 단위
+- `vw`, `vh`: 뷰포트 너비/높이 1%
+- `vmin`, `vmax`: 너비·높이 중 작은/큰 쪽 기준
+
+```css
+.container {
+  width: 80vw;
+  height: 50vh;
+  padding: 2vmin;
+}
+```
+
+### 🧱 반응형 레이아웃 예시 (Flex + Media Query)
+```css
+.box { width: 30%; }
+@media (max-width: 1023px) {
+  .box { width: 48%; }
+}
+@media (max-width: 767px) {
+  .box { width: 100%; }
+}
+```
+
+> 🧾 **요약**: 반응형 웹은 다양한 화면 크기에 따라 레이아웃을 자동 조정해 사용자 경험을 향상시킴.
+
+---
+
+## ✅ 배경과 그라디언트
+
+### 🎨 배경색 & 배경이미지
+```css
+background-color: lightblue;
+background-image: url("이미지주소");
+background-size: cover;
+background-position: center;
+```
+
+### 🌈 그라디언트
+```css
+/* 선형 */
+background: linear-gradient(to right, lightblue, lightgreen);
+
+/* 원형 */
+background: radial-gradient(circle, lightblue, lightcoral);
+```
+
+### 🖼 이미지 + 그라디언트 겹치기
+```css
+background: linear-gradient(...), url("이미지주소");
+```
+
+> 🧾 **요약**: 그라디언트와 이미지 조합으로 시각적으로 풍부한 배경 표현 가능.
+
+---
+
+## ✅ 보더(Border)와 그림자(Shadow)
+
+### 📏 보더 스타일
+- `solid`, `dashed`, `dotted`, `double`, `groove`, `ridge`, `inset`, `outset`
+
+```css
+border: 2px dashed red;
+```
+
+### 🟢 모서리 둥글게
+```css
+border-radius: 15px;   /* 둥근 모서리 */
+border-radius: 50%;    /* 원형 */
+```
+
+### 📦 박스 그림자
+```css
+box-shadow: 10px 10px 5px rgba(0,0,0,0.5);
+```
+
+### 📝 텍스트 그림자
+```css
+text-shadow: 2px 2px 3px rgba(0,0,0,0.5);
+```
+
+> 🧾 **요약**: 보더와 그림자를 활용해 요소에 입체감과 강조 효과를 줄 수 있음.
+
+---
+
+## ✅ 트랜지션 & 애니메이션
+
+### 🔁 트랜지션 (hover 등 인터랙션 반응)
+```css
+.box {
+  transition: background-color 0.5s ease, width 0.5s ease;
+}
+```
+
+### 🧠 애니메이션 기본
+```css
+@keyframes example {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(100px); }
+  100% { transform: translateX(0); }
+}
+
+.box-animate {
+  animation: example 4s infinite;
+}
+```
+
+### 🔄 복합 애니메이션
+```css
+animation: colorChange 5s infinite, moveAndRotate 5s infinite;
+```
+
+> 🧾 **요약**: 트랜지션은 상태 변화에 부드러움 제공, 애니메이션은 시간 기반 변화 연출
+
+---
+
+✅ **총정리**
+- 반응형 디자인은 뷰포트 단위와 미디어 쿼리 활용이 핵심
+- 배경과 그림자, 보더로 시각 효과 강화
+- 트랜지션과 애니메이션으로 UI에 생동감을 더함
