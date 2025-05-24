@@ -1,0 +1,26 @@
+# 📘 배운내용 요약 ① (5월 19일 ~ 5월 21일)
+
+## ✅ CSS 단위 (Units)
+- `px`: 고정 크기
+- `em` / `rem`: 부모 또는 root 기준 상대 단위
+- `%`, `vw`, `vh`: 상대적 뷰포트 기반 단위
+- `rem`은 유지보수, 반응형에 유리
+
+## ✅ 텍스트 & 폰트 스타일링
+- `font-size`, `color`, `text-align`
+- `font-family`, `font-weight`, `text-transform`, `text-decoration` 등으로 스타일 조정
+
+## ✅ 박스 모델 & display
+- `padding`, `border`, `margin` 이해
+- `box-sizing: border-box` 추천
+- `display`: block / inline / inline-block / none
+
+## ✅ 시맨틱 태그
+- `<header>`, `<footer>`, `<nav>`, `<section>`, `<article>`, `<aside>`, `<main>`
+- 구조를 명확히 하여 접근성과 SEO에 도움
+
+## ✅ Flexbox 레이아웃
+- `display: flex`, `flex-direction`, `justify-content`, `align-items`
+- 아이템별 `flex-grow`, `flex-basis`, `order`, `align-self` 등 개별 제어
+
+> 🧾 **요약**: 시맨틱 구조를 갖춘 문서에, 다양한 단위와 텍스트 스타일링, Flexbox 기반의 레이아웃으로 UI를 정렬하고 배치할 수 있음.
