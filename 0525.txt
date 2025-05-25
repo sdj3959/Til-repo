@@ -1,0 +1,29 @@
+# 📘 배운내용 요약 ② (5월 22일 ~ 5월 23일)
+
+## ✅ 포지셔닝 (Position)
+- `static`: 기본값
+- `relative`: 자기 위치 기준
+- `absolute`: 조상 요소 기준 위치
+- `fixed`: 뷰포트 고정
+- `sticky`: 특정 위치 도달 시 고정
+
+## ✅ z-index
+- 쌓임 순서 결정 (숫자 클수록 위)
+- `position` 속성이 있어야 동작
+
+## ✅ 반응형 웹
+- `@media` 쿼리로 해상도별 스타일 설정
+- `vw`, `vh`, `%`로 뷰포트 기반 크기 설정
+
+## ✅ 배경 스타일
+- `background-color`, `background-image`
+- `linear-gradient`, `radial-gradient`로 색상 전환 효과
+
+## ✅ 박스 및 텍스트 그림자
+- `box-shadow`, `text-shadow`로 입체감 표현
+
+## ✅ 트랜지션 & 애니메이션
+- `transition`: hover 시 부드러운 변화
+- `@keyframes`, `animation`으로 반복 동작 설정
+
+> 🧾 **요약**: 위치 제어와 시각 효과를 통해 다양한 화면 크기에서 동작하는 반응형 UI 구현이 가능하며, 애니메이션으로 동적인 UX 향상 가능.
