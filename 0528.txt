@@ -1,0 +1,126 @@
+# 📘 자바스크립트 학습 정리 (0528)
+
+## ✅ 1. 연산자 (Operators)
+
+### 🔢 산술 연산자 (Arithmetic)
+| 연산자 | 설명 | 예시 | 결과 |
+|--------|------|------|------|
+| `+` | 덧셈 | `5 + 3` | 8 |
+| `-` | 뺄셈 | `10 - 7` | 3 |
+| `*` | 곱셈 | `4 * 2` | 8 |
+| `/` | 나눗셈 | `20 / 5` | 4 |
+| `%` | 나머지 | `7 % 2` | 1 |
+
+```js
+let a = 10, b = 3;
+console.log(a + b); // 13
+console.log(a - b); // 7
+console.log(a * b); // 30
+console.log(a / b); // 3.333...
+console.log(a % b); // 1
+```
+
+---
+
+### 🟩 대입 연산자 (Assignment)
+| 연산자 | 설명 | 예시 | 결과 |
+|--------|------|------|--------|
+| `=` | 대입 | `x = 5` | 5 |
+| `+=` | 더한 후 대입 | `x += 3` | 8 |
+| `-=` | 뺀 후 대입 | `x -= 2` | 6 |
+| `*=` | 곱한 후 대입 | `x *= 4` | 24 |
+| `/=` | 나눈 후 대입 | `x /= 2` | 12 |
+| `%=` | 나머지 후 대입 | `x %= 3` | 0 |
+
+```js
+let x = 10;
+x += 5;
+x *= 2;
+x %= 7;
+console.log(x); // 2
+```
+
+---
+
+### ⚖️ 비교 연산자 (Comparison)
+| 연산자 | 설명 | 예시 | 결과 |
+|--------|------|------|--------|
+| `==` | 값 비교 | `5 == '5'` | true |
+| `===` | 값과 타입 비교 | `5 === '5'` | false |
+| `!=` | 부등 (값만 비교) | `5 != '5'` | false |
+| `!==` | 부등 (값+타입) | `5 !== '5'` | true |
+| `>` | 크다 | `7 > 3` | true |
+| `<` | 작다 | `2 < 5` | true |
+| `>=` | 크거나 같다 | `5 >= 5` | true |
+| `<=` | 작거나 같다 | `3 <= 2` | false |
+
+```js
+console.log(10 == '10'); // true
+console.log(10 === '10'); // false
+```
+
+---
+
+### 🧠 논리 연산자 (Logical)
+| 연산자 | 설명 | 예시 | 결과 |
+|--------|------|------|--------|
+| `&&` | 논리 AND | `true && false` | false |
+| `||` | 논리 OR | `true || false` | true |
+| `!` | 논리 NOT | `!true` | false |
+
+```js
+let isAdult = true;
+let hasPermission = false;
+
+console.log(isAdult && hasPermission); // false
+console.log(isAdult || hasPermission); // true
+console.log(!isAdult); // false
+```
+
+---
+
+## ✅ 2. 조건문 (Conditionals)
+
+### 🔹 if / else if / else 문
+
+```js
+let score = 85;
+
+if (score >= 90) {
+  console.log('A 학점');
+} else if (score >= 80) {
+  console.log('B 학점');
+} else if (score >= 70) {
+  console.log('C 학점');
+} else {
+  console.log('D 학점');
+}
+```
+
+> 조건을 위에서부터 검사하여 처음 `true`인 블록이 실행됨
+
+---
+
+## ✅ 3. 삼항 연산자 (Ternary Operator)
+
+### 📌 구조: `(조건) ? 값1 : 값2`
+
+```js
+let age = 20;
+let status = (age >= 18) ? '성인' : '미성년자';
+console.log(status); // 성인
+```
+
+### 🔁 중첩 예시
+
+```js
+let score = 95;
+let grade = (score >= 90) ? 'A' : (score >= 80) ? 'B' : 'C';
+console.log(grade); // A
+```
+
+---
+
+✅ **총정리**
+- 자바스크립트 연산자는 계산, 비교, 논리 판단을 담당하는 핵심 도구
+- 조건문과 삼항 연산자를 이용하면 상황에 따라 동적으로 흐름을 제어할 수 있음
