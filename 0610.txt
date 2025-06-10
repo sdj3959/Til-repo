@@ -1,0 +1,114 @@
+# 📘 자바스크립트 학습 정리 (0610)
+
+## ✅ DOM 요소 선택 및 조작
+
+- `getElementById`, `querySelector`, `querySelectorAll`로 DOM 요소를 선택
+- `textContent`, `innerHTML`로 텍스트 또는 HTML 삽입/수정
+- `style` 속성으로 인라인 스타일 직접 조작
+- `classList` 사용하여 클래스 추가/제거/토글
+
+```js
+const $banana = document.getElementById('banana');
+$banana.textContent = '뽀너너';
+$banana.style.color = 'red';
+$banana.classList.add('active');
+```
+
+---
+
+## ✅ 유사 배열과 진짜 배열
+
+- `querySelectorAll`은 유사 배열 반환 → `Array.from()` 또는 전개 연산자 `[...]`로 배열로 변환
+
+```js
+const elements = document.querySelectorAll('.item');
+const realArray = [...elements];
+```
+
+---
+
+## ✅ 부모 / 형제 / 자식 요소 접근
+
+- `parentElement`, `children`, `firstElementChild`, `lastElementChild`, `nextElementSibling`, `previousElementSibling`
+
+```js
+const $target = $el.parentElement.nextElementSibling;
+```
+
+---
+
+## ✅ 반복을 통한 스타일 변경
+
+- `forEach()`로 모든 요소 순회하며 스타일 적용
+
+```js
+$fruits.forEach($li => {
+  $li.style.border = '2px solid orange';
+});
+```
+
+---
+
+## ✅ innerHTML을 이용한 태그 조작
+
+- 요소 내부 전체를 HTML 문자열로 교체하거나 추가 가능
+- 주의: 기존 DOM 요소가 모두 사라짐
+
+```js
+$ul.innerHTML = '<li>새 항목</li>';
+$ul.innerHTML += '<li>또 다른 항목</li>';
+```
+
+---
+
+## ✅ 태그 동적 생성 및 추가
+
+- `document.createElement(tag)`로 새 요소 생성
+- `append`, `prepend`, `before`, `after`로 DOM에 삽입
+
+```js
+const $li = document.createElement('li');
+$li.textContent = '새 항목';
+$ul.append($li);
+```
+
+---
+
+## ✅ 요소 제거 및 교체
+
+- `remove()`, `removeChild`, `replaceChild`, `replaceWith()`
+
+```js
+$banana.remove();
+$apple.replaceWith($newInput);
+```
+
+---
+
+## ✅ 속성(attribute) 조작
+
+- `getAttribute`, `setAttribute`, `removeAttribute`, `hasAttribute`
+
+```js
+$el.setAttribute('title', '설명');
+$el.removeAttribute('title');
+```
+
+---
+
+## ✅ classList 조작 메서드
+
+- `add`, `remove`, `replace`, `toggle`, `contains`
+
+```js
+$el.classList.toggle('circle');
+$el.classList.replace('green', 'blue');
+```
+
+---
+
+✅ **총정리**
+
+- 다양한 DOM 선택자와 요소 간 관계를 활용해 문서 구조 탐색
+- 속성, 클래스, 스타일 등을 자유롭게 조작해 동적 UI 구현
+- create/remove/replace 등 실전 DOM 조작 기법 숙지
