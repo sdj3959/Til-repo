@@ -1,0 +1,100 @@
+# 📘 자바스크립트 학습 정리 (0611)
+
+## ✅ 주요 개념 요약
+
+### 📌 1. 이벤트 핸들러 바인딩
+
+- `onclick`, `ondblclick`, `onmouseover`, `onmouseout` 등 HTML 속성에 직접 함수 연결 가능
+- `addEventListener`를 사용해 여러 이벤트를 등록하고, 나중에 제거도 가능
+
+```js
+element.onclick = function () {};
+element.addEventListener('click', handler);
+element.removeEventListener('click', handler);
+```
+
+---
+
+### 📌 2. 이벤트 전파 (Event Propagation)
+
+- **버블링**: 이벤트가 하위 요소 → 상위 요소로 전파됨
+- `e.stopPropagation()`을 사용해 버블링 차단 가능
+
+```js
+element.addEventListener('click', e => {
+  e.stopPropagation();
+});
+```
+
+---
+
+### 📌 3. DOM 조작
+
+- `createElement`, `append`, `setAttribute`, `textContent` 등을 사용하여 동적으로 요소를 생성/삽입 가능
+
+```js
+const li = document.createElement('li');
+li.textContent = '과일';
+ul.append(li);
+```
+
+---
+
+### 📌 4. 이벤트 위임 (Event Delegation)
+
+- 상위 요소에 이벤트를 걸고, 이벤트 발생 시 `e.target`으로 실제 클릭한 요소를 판별
+
+```js
+ul.addEventListener('click', e => {
+  if (!e.target.matches('li')) return;
+  // 클릭한 li 요소 처리
+});
+```
+
+---
+
+### 📌 5. 키보드 이벤트
+
+- `keyup`, `keydown`, `keypress` 등 사용
+- `e.key` 또는 `e.code`로 어떤 키를 눌렀는지 확인
+
+```js
+input.addEventListener('keyup', e => {
+  if (e.key === 'Enter') {
+    console.log('엔터 입력됨');
+  }
+});
+```
+
+---
+
+### 📌 6. 링크 클릭 방지 및 커스텀 이동
+
+- `e.preventDefault()`로 기본 이동을 막고 사용자 동작 삽입 가능
+
+```js
+a.addEventListener('click', e => {
+  e.preventDefault();
+  window.location.href = 'https://example.com';
+});
+```
+
+---
+
+### 📌 7. 이미지 슬라이더 구현
+
+- `src` 속성을 바꿔서 이미지 교체
+- `prev`, `next` 버튼과 썸네일을 통해 이미지 전환 가능
+- 배열 인덱스로 이미지 위치 추적
+
+```js
+$img.setAttribute('src', images[imgIdx]);
+```
+
+---
+
+✅ **총정리**
+- 이벤트 처리 방식 비교 (직접 바인딩 vs addEventListener)
+- 이벤트 전파 흐름 이해 및 제어
+- 동적 요소 생성과 위임 이벤트를 통한 효율적인 DOM 조작
+- 이미지 슬라이더 등 실전 UI 기능 구현 경험
