@@ -1,0 +1,89 @@
+# 📘 자바스크립트 학습 정리 (0612)
+
+## ✅ 동기 / 비동기 처리
+
+- **동기(Synchronous)**: 코드가 순차적으로 실행됨
+- **비동기(Asynchronous)**: 코드 실행 순서를 따르지 않고 예약되어 나중에 실행됨
+
+```js
+console.log("first");
+setTimeout(() => console.log("second"), 1000);
+console.log("third");
+// 실행 결과: first → third → second
+```
+
+---
+
+## ✅ setTimeout / clearTimeout
+
+- 일정 시간 후에 특정 작업을 실행하도록 예약하는 함수
+- `clearTimeout(id)`으로 예약 취소 가능
+
+```js
+const timerId = setTimeout(() => console.log("2초 뒤 실행"), 2000);
+clearTimeout(timerId); // 실행 취소
+```
+
+- 버튼 클릭으로 예약, 취소, 메시지 변경 예제 실습 포함
+
+---
+
+## ✅ setInterval / clearInterval
+
+- 일정한 시간 간격으로 작업을 반복 실행
+- 중단 시 `clearInterval(intervalId)` 사용
+
+```js
+const id = setInterval(() => console.log("1초마다 실행"), 1000);
+clearInterval(id);
+```
+
+- 실습 예시: 실시간 시계, 스톱워치, 배경색 반복 변경 등
+
+---
+
+## ✅ 알림창 표시 및 자동 사라짐 구현
+
+- 버튼 클릭 시 `.alert` 요소에 `.show` 클래스 추가
+- `setTimeout()`으로 3초 후 알림 제거
+- 수동 닫기 버튼으로 `clearTimeout()` 처리
+
+---
+
+## ✅ 슬라이더 & 썸네일 이미지 구현
+
+- 이미지 배열을 순회하며 `img.src` 속성 변경
+- 이전/다음 버튼, 썸네일 클릭으로 슬라이드 전환
+- 자동 슬라이딩: `setInterval` 활용
+
+```js
+$img.setAttribute('src', images[imgIdx]);
+```
+
+---
+
+## ✅ 배경색 순환
+
+- 3초마다 `body.style.backgroundColor`를 순차 변경
+- `setTimeout`으로 15초 후 인터벌 중지
+
+---
+
+## ✅ 스톱워치 기능
+
+- 시작: `setInterval()`로 10ms 단위 시간 측정
+- 일시정지: `clearInterval()`, 로그 저장
+- 초기화: 시간/로그 초기화 및 상태 변경
+
+```js
+const minutes = Math.floor(elapsedTime / 60000);
+const seconds = Math.floor((elapsedTime % 60000) / 1000);
+const milliseconds = Math.floor((elapsedTime % 1000) / 10);
+```
+
+---
+
+✅ **총정리**
+- 비동기 함수인 `setTimeout`, `setInterval`을 활용해 다양한 시간 기반 동작 구현
+- 사용자 인터랙션을 통한 예약 작업 취소, UI 변화 조작 익힘
+- 반복, 예약, 취소 개념을 이해하고 실제 DOM과 함께 응용
