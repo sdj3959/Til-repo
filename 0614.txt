@@ -1,0 +1,57 @@
+# 📘 자바스크립트 복습 정리 (0614)
+
+## ✅ 구조 분해 할당 & 스프레드 문법
+
+- 배열, 객체의 값을 변수에 빠르게 할당
+- 배열 병합, 복사 / 객체 병합도 `...` 문법으로 처리
+
+```js
+const [a, b] = [1, 2];
+const { name, age } = user;
+const combo = [...arr1, ...arr2];
+```
+
+## ✅ 고차 함수 (forEach, filter, map, reduce 등)
+
+- 배열 순회, 필터링, 매핑, 누적 계산을 함수형 스타일로 처리
+- 조건 만족 객체 필터, 이름만 추출, 거래 합계 등 실습
+
+```js
+arr.filter(el => el.price > 1000);
+arr.map(el => el.name);
+arr.reduce((acc, cur) => acc + cur.amount, 0);
+```
+
+## ✅ DOM 선택자 & 조작
+
+- getElementById / querySelector로 요소 선택
+- classList, style, innerHTML 등 속성 및 스타일 조작
+- createElement / append로 동적 요소 삽입
+
+```js
+const $li = document.createElement('li');
+$li.textContent = '과일';
+$ul.append($li);
+```
+
+## ✅ 이벤트 핸들링
+
+- addEventListener로 이벤트 바인딩
+- 위임 이벤트, stopPropagation, preventDefault 활용
+
+```js
+btn.addEventListener('click', handler);
+ul.addEventListener('click', e => {
+  if (!e.target.matches('li')) return;
+});
+```
+
+## ✅ 이미지 슬라이더 & 키보드 이벤트
+
+- 썸네일 클릭, prev/next 버튼으로 이미지 전환
+- keyup으로 엔터 키 이벤트 처리
+
+```js
+$img.src = images[imgIdx];
+input.addEventListener('keyup', e => { if (e.key === 'Enter') ... });
+```
