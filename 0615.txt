@@ -1,0 +1,51 @@
+# 📘 자바스크립트 복습 정리 (0615)
+
+## ✅ 비동기 함수 (setTimeout / setInterval)
+
+- 일정 시간 후 또는 주기로 함수 실행
+- clearTimeout / clearInterval로 취소 가능
+
+```js
+setTimeout(() => alert('Hi'), 3000);
+const id = setInterval(callback, 1000);
+clearInterval(id);
+```
+
+## ✅ 알림창, 배경색 순환, 스톱워치
+
+- 3초 뒤 메시지 숨기기, 3초마다 색 변경
+- 스톱워치: 10ms 단위 시간 측정 → 일시정지, 초기화
+
+```js
+setTimeout(() => $alert.classList.remove('show'), 3000);
+```
+
+## ✅ 드롭다운 & 탭 UI
+
+- 클릭으로 메뉴 토글, 탭 활성화
+- classList 활용 및 data-tab 속성 활용
+
+```js
+tabBtn.addEventListener('click', () => {
+  tabBtn.classList.add('active');
+  document.getElementById(tabBtn.dataset.tab).classList.add('active');
+});
+```
+
+## ✅ 단계별 폼 & 모달
+
+- 스텝 형태 UI 구성: 현재 단계 기반으로 콘텐츠 토글
+- 모달창: overlay 클릭, ESC 키로 닫기, body 스크롤 방지
+
+## ✅ 드래그 앤 드롭 정렬
+
+- dragstart/dragover/drop 이벤트 활용
+- placeholder 위치에 따라 정렬
+
+```js
+if (distance < height / 2) target.before(placeholder);
+```
+
+✅ **총정리**
+- 비동기 처리, 이벤트 위임, 시간 기반 UI 구현 능력 향상
+- 다양한 UI 컴포넌트를 직접 구현하며 DOM 조작 심화
