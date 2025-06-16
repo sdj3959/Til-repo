@@ -1,0 +1,106 @@
+# 📘 자바스크립트 학습 정리 (0616)
+
+## ✅ 일급 객체 함수
+
+- 자바스크립트 함수는 **일급 객체**로 다룰 수 있음
+  - 변수에 저장 가능
+  - 함수의 인자로 전달 가능
+  - 함수에서 반환 가능
+
+```js
+function foo() { return 100; }
+function bar() { return foo; }
+const result = bar();  // result는 함수 foo
+console.log(result()); // 100
+```
+
+---
+
+## ✅ 중첩 함수와 화살표 함수 반환
+
+- 함수 안에 함수를 정의하고 반환하면, 호출 구조가 깊어짐
+
+```js
+const calculate = () => (n1, n2) => n1 * n2;
+console.log(calculate()(10, 3)); // 30
+```
+
+---
+
+## ✅ 클로저 (Closure)
+
+- 외부 함수의 지역 변수를 기억하는 내부 함수
+- 특정 데이터를 보호하며 유지할 수 있음
+
+```js
+function increaseClosure() {
+  let count = 0;
+  return {
+    increaseCount: () => ++count,
+    decreaseCount: () => --count
+  };
+}
+
+const { increaseCount, decreaseCount } = increaseClosure();
+increaseCount(); // 1
+increaseCount(); // 2
+decreaseCount(); // 1
+```
+
+- 클로저를 이용해 **상태가 독립적인 여러 카운터 함수** 생성 가능
+
+---
+
+## ✅ 디바운스 (Debounce)
+
+- 입력이 멈춘 후 일정 시간이 지난 뒤 실행되는 함수
+- 빠르게 반복되는 이벤트를 제어할 수 있음
+
+```js
+function debounce(callback, delay) {
+  let timerId = null;
+  return function (args) {
+    clearTimeout(timerId);
+    timerId = setTimeout(() => callback(args), delay);
+  };
+}
+```
+
+- 실습 예: 음식 검색창에서 입력 중일 때 서버 호출을 지연하여 줄이기
+
+---
+
+## ✅ 스로틀 (Throttle)
+
+- 주기적으로만 콜백을 실행하는 기법 (쿨타임 개념)
+
+```js
+function throttle(callback, delay) {
+  let timerId = null;
+  return () => {
+    if (!timerId) {
+      timerId = setTimeout(() => {
+        callback();
+        timerId = null;
+      }, delay);
+    }
+  };
+}
+```
+
+- 스크롤 이벤트 최적화, 무한 스크롤 구현 등에 활용
+
+---
+
+## ✅ 무한 스크롤 구현
+
+- `scrollY + innerHeight >= offsetHeight - 여유값` 조건으로 하단 도달 체크
+- 콘텐츠를 계속 추가, 일정 개수 도달 시 중단
+
+---
+
+✅ **총정리**
+
+- 함수의 일급 객체 개념, 클로저를 통한 상태 보존
+- 디바운스/스로틀 같은 고급 함수 활용법 학습
+- 실전 프로젝트에서 유용한 검색 최적화, 무한 스크롤 등 구현 능력 향상
