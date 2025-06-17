@@ -1,0 +1,73 @@
+# 📘 자바스크립트 학습 정리 (0617)
+
+## ✅ 무한 스크롤 (Intersection Observer 활용)
+
+- `IntersectionObserver`를 이용해 마지막 콘텐츠가 뷰포트에 나타날 때 자동 콘텐츠 추가
+- 비동기적으로 콘텐츠를 동적으로 로딩 (ex: SNS 피드 등)
+- 감시 대상이 교체되도록 `observer.observe($마지막요소)` 반복 호출
+- 로딩 스피너로 사용자 피드백 제공
+
+```js
+const observer = new IntersectionObserver(entries => {
+  if (entries[0].isIntersecting) loadMoreContent();
+});
+```
+
+---
+
+## ✅ 스크롤 애니메이션
+
+- 콘텐츠가 뷰포트에 일정 부분 나타날 때 `animate` 클래스 추가해 효과 발동
+- `threshold` 옵션으로 감지 민감도 설정 (예: `0.5` → 50% 보일 때 발동)
+- 감시 후 `observer.unobserve(entry.target)`로 재감지 방지
+
+```js
+if (entry.isIntersecting) {
+  entry.target.classList.add('animate');
+  observer.unobserve(entry.target);
+}
+```
+
+---
+
+## ✅ 폼 유효성 검사 (이메일 & 비밀번호)
+
+- 이메일 정규식: `^[^\s@]+@[^\s@]+\.[^\s@]+$`
+- 비밀번호 정규식: 영문 + 숫자 + 특수문자 포함 최소 8자
+
+- 디바운스를 통해 입력 후 일정 시간(700ms) 뒤 유효성 검사 실행
+- 올바르게 입력되었을 때 버튼 활성화
+
+```js
+function debounce(func, delay) {
+  let timeout;
+  return function (...args) {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func(...args), delay);
+  };
+}
+```
+
+---
+
+## ✅ 숫자 맞추기 게임 (업다운 게임)
+
+- 1~100 사이 랜덤 숫자 생성
+- 사용자의 입력값과 정답 비교하여 피드백 (UP, DOWN, CORRECT)
+- 추측 기록을 상단에 추가 (`ul.prepend()`)
+- 모달로 정답 여부 안내
+
+- 10번 기회로 도전, 입력값이 범위 밖일 경우 경고창 표시
+- 정답 시 또는 기회 소진 시 모달창 띄우기
+
+```js
+if (+inputValue === game.rnd) showModal(true);
+else if (inputValue > game.rnd) feedbackChange('DOWN');
+else feedbackChange('UP');
+```
+
+✅ **총정리**
+
+- IntersectionObserver 활용법 숙지: 무한스크롤, 애니메이션
+- 디바운스와 정규식을 활용한 입력값 유효성 검사 구현
+- 실전 인터랙션 UI 구현 (업다운 게임, 동적 콘텐츠 추가 등) 경험 강화
