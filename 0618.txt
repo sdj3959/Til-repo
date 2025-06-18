@@ -1,0 +1,82 @@
+# 📘 자바스크립트 학습 정리 (0618)
+
+## ✅ XMLHttpRequest (XHR) 기초
+
+- 자바스크립트로 서버와 통신하는 대표적인 객체
+- `open(method, url)`, `send()`로 요청 전송
+- `load` 이벤트로 응답 수신 후 처리
+
+```js
+const xhr = new XMLHttpRequest();
+xhr.open('GET', 'https://example.com/data');
+xhr.send();
+xhr.addEventListener('load', () => {
+  const data = JSON.parse(xhr.responseText);
+  console.log(data);
+});
+```
+
+---
+
+## ✅ JSON 데이터 처리
+
+- 서버에서 받은 문자열(JSON)을 JS 객체로 변환: `JSON.parse()`
+- 반대로 서버로 보낼 때 객체 → JSON: `JSON.stringify()`
+
+```js
+const obj = JSON.parse(jsonText);
+const json = JSON.stringify(obj);
+```
+
+---
+
+## ✅ 중첩 요청 처리 (Callback Hell)
+
+- 서버 응답을 받아 다른 요청을 다시 보내는 구조
+- 실습 예:
+  1. 유저 목록 요청 → 두 번째 유저 선택
+  2. 해당 유저의 게시글 요청
+  3. 4번째 게시글의 댓글 요청
+
+```js
+fetchGet('/users', users => {
+  fetchGet(`/posts?userId=${users[1].id}`, posts => {
+    fetchGet(`/comments?postId=${posts[3].id}`, comments => {
+      console.log(comments);
+    });
+  });
+});
+```
+
+---
+
+## ✅ Github 사용자 정보 API 조회
+
+- Github Open API 활용
+- 사용자명으로 프로필 정보 요청: `/users/{username}`
+- 저장소 목록 요청: `repos_url` 사용
+
+- 프로필 정보, 아바타, 팔로워, 깃헙링크 등 렌더링
+- 저장소 정보 리스트: 이름, 별 수, 포크 수
+
+```js
+fetchGet(`https://api.github.com/users/${username}`, data => {
+  displayProfile(data);
+  fetchGet(data.repos_url, displayRepos);
+});
+```
+
+---
+
+## ✅ 실전 예제 요약
+
+1. 버튼 클릭 → XHR로 `GET` 요청
+2. JSON 데이터 파싱 후 DOM 렌더링
+3. Github API로 사용자 프로필 + 저장소 출력
+4. 다단계 요청 구조 익힘 (콜백 구조 이해)
+
+✅ **총정리**
+- XMLHttpRequest로 비동기 서버 요청 처리 학습
+- JSON 데이터 파싱 및 활용법 숙지
+- 콜백 기반 API 호출 흐름 이해 (콜백 지옥 구조 포함)
+- 실전 예제로 Github API를 이용해 동적 렌더링 구현
