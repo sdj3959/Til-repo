@@ -1,0 +1,101 @@
+# 📘 자바스크립트 학습 정리 (0619)
+
+## ✅ Promise 체이닝
+
+- `resolve`, `reject` 콜백으로 프로미스 결과 반환
+- `.then()`을 통해 순차적으로 작업을 이어갈 수 있음
+- 콜백 지옥 없이 비동기 흐름을 명확하게 구성 가능
+
+```js
+new Promise((resolve, reject) => {
+  resolve("성공 메시지");
+})
+  .then(msg => msg + " 추가 메시지")
+  .then(finalMsg => console.log(finalMsg));
+```
+
+---
+
+## ✅ XMLHttpRequest + Promise 구조화
+
+- 기존 `XMLHttpRequest`를 Promise로 감싸 비동기 로직을 단순화
+- `.then()`을 통해 중첩 요청을 순차적으로 처리
+
+```js
+function fetchGet(url) {
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', url);
+    xhr.send();
+    xhr.onload = () => resolve(JSON.parse(xhr.responseText));
+    xhr.onerror = () => reject("에러 발생");
+  });
+}
+```
+
+---
+
+## ✅ 실전 예제 - 3단계 요청 처리
+
+1. 사용자 목록 요청 → 두 번째 사용자 선택
+2. 해당 사용자의 게시글 목록 요청 → 4번째 게시글 선택
+3. 해당 게시글의 댓글 목록 요청 → 화면에 댓글 출력
+
+```js
+fetchGet('/users')
+  .then(users => fetchGet(`/posts?userId=${users[1].id}`))
+  .then(posts => fetchGet(`/comments?postId=${posts[3].id}`))
+  .then(comments => renderComments(comments));
+```
+
+---
+
+## ✅ API 응답 데이터를 UI에 렌더링
+
+- 서버에서 받은 게시글 데이터를 `.post` DOM으로 동적 생성
+- 응답 상태에 따라 로딩 메시지, 에러 메시지 표시
+
+```js
+.then(posts => displayPosts(posts.slice(0, 5)))
+.catch(error => showError(error))
+.finally(() => console.log("완료"));
+```
+
+---
+
+## ✅ Fetch 기본 사용 & async/await
+
+- `fetch(url).then().catch()`로 사용 가능
+- `async function` 내에서 `await`로 코드 간결화
+
+```js
+async function fetchData() {
+  const res = await fetch(url);
+  const data = await res.json();
+  console.log(data);
+}
+```
+
+---
+
+## ✅ 외부 API 통신 (Gemini API, Pokemon API)
+
+- Gemini: POST 방식 사용, `Content-Type: application/json`
+- PokeAPI: 포켓몬 리스트 불러오기 + 상세 이미지 요청
+- `offset`, `limit` 사용해 페이지네이션 구현
+
+```js
+const res = await fetch(`${pokeUrl}?offset=${offset}&limit=${limit}`);
+const { results } = await res.json();
+```
+
+- 이전/다음 버튼으로 `offset` 이동
+- 포켓몬 이미지와 이름을 카드 형태로 렌더링
+
+---
+
+✅ **총정리**
+
+- Promise 체이닝을 통해 비동기 흐름을 깔끔하게 구성하는 방법 익힘
+- 실전 API 사용 능력 향상 (XHR → Fetch, POST, JSON 처리 등)
+- async/await 문법을 사용해 가독성 좋은 비동기 코드를 작성하는 법 학습
