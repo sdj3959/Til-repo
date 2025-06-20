@@ -1,0 +1,72 @@
+# 📘 자바스크립트 학습 정리 (0620)
+
+## ✅ 다크 모드 / 라이트 모드 테마 전환
+
+- 버튼 클릭으로 `body` 클래스 전환 (`light-mode` ↔ `dark-mode`)
+- 텍스트 변경: "다크 모드로 변경" ↔ "라이트 모드로 변경"
+- `localStorage`를 통해 테마 상태를 브라우저에 영구 저장
+
+```js
+localStorage.setItem('theme', currentTheme);
+document.body.classList.add(savedTheme);
+```
+
+- 새로고침 시 저장된 테마를 로드하여 초기화
+
+---
+
+## ✅ 투두리스트 기능 구성
+
+- 상태(state) 객체를 통해 모든 데이터를 통합 관리
+  - `todos`: 할 일 배열 (id, text, completed)
+  - `currentFilter`: 필터 상태 ('all', 'active', 'completed')
+
+### 📌 주요 기능
+
+- 할 일 추가 (`addTodo()`)
+- 할 일 삭제 (`deleteTodo()`)
+- 완료 여부 토글 (`toggleTodo()`)
+- 완료된 항목 일괄 삭제 (`clearCompletedTodos()`)
+- 필터링 (전체/진행중/완료)
+
+```js
+state.todos = state.todos.filter(todo => !todo.completed);
+state.todos = state.todos.map(todo => todo.id === id ? {...todo, completed: true} : todo);
+```
+
+- 필터 버튼 클릭 시 상태값 변경 → render() 호출
+
+### 📌 렌더링
+
+- 상태에 따라 `ul` 내부에 `<li>` 동적으로 생성
+- 필터 버튼 `active` 클래스 처리
+- 남은 할 일 개수 표시
+
+---
+
+## ✅ 이벤트 위임 & DOM 조작
+
+- `submit`, `click` 이벤트 처리로 추가/삭제/체크 동작
+- `closest('.todo-item')`로 이벤트 대상의 ID 추출
+- `dataset.id` 활용해 각 할 일 요소 추적
+
+---
+
+## ✅ 실행 코드
+
+- 초기 렌더링: `render()` 호출
+- 사용자 입력 시 DOM 및 상태 동기화
+
+---
+
+## ✅ 모듈화 구조 학습
+
+- 이후 버전에서 상태, 렌더, 이벤트 등을 각각 모듈로 분리
+  - state.js, dom.js, render.js, event.js, store.js 등
+
+✅ **총정리**
+
+- 테마 토글과 로컬 스토리지 연동 방식 숙지
+- 상태 객체 중심의 투두리스트 구조 이해
+- 렌더링 최적화, 이벤트 위임, DOM 조작 능력 향상
+- 이후 구조 분리를 위한 모듈화 설계
